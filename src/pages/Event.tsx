@@ -13,7 +13,7 @@ export function Event() {
       <main className="flex flex-1">
         {slug
           ? <Video lessonSlug={slug} />
-          : <div className="flex flex-col justify-center w-full max-w-[1100px] max-h-[60vh]">
+          : <div className="flex flex-1 flex-col justify-center w-full max-w-[1100px] max-h-[60vh] aspect-video">
               <Player>
                 <Ui>
                   <LoadingScreen>

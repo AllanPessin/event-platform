@@ -3,34 +3,6 @@ import { CaretRight, CircleNotch, DiscordLogo, FileArrowDown, Lightning } from "
 import '@vime/core/themes/default.css';
 import { gql, useQuery } from "@apollo/client";
 
-const GET_LESSON_BY_SLUG_QUERY = gql `  
-  query GetLessonBySlug($slug: String) {
-    lesson(where: { slug: $slug }) {
-      title
-      videoId
-      description
-      teacher {
-        name
-        bio
-        avatarURL
-      }
-    }
-  }
-`
-
-interface GetLessonBySlugResponse {
-  lesson: {
-    title: string
-    videoId: string
-    descripton: string
-    teacher: {
-      avatarURL: string
-      name: string
-      bio: string
-    }
-  }
-}
-
 interface VideoProps {
   lessonSlug: string
 }
