@@ -1,7 +1,8 @@
-import { gql, useMutation } from "@apollo/client";
-import { useState, FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../components/Footer";
 import { Logo } from "../components/Logo";
+import { useCreateSubscriberMutation } from "../graphql/generated";
 
 export function Subscribe() {
   const navigate = useNavigate()
@@ -9,10 +10,10 @@ export function Subscribe() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
-  const [createSubscriber, { loading }] = useMutation(CREATE_SUBSCRIBER_MUTATION)
+  const [createSubscriber, { loading }] = useCreateSubscriberMutation()
 
   async function handleSubscriber(event: FormEvent) {
-    event?.preventDefault
+    event.preventDefault
 
     await createSubscriber({
       variables: {
@@ -20,7 +21,7 @@ export function Subscribe() {
         email
       }
     })
-    
+
     navigate('/event')
   }
 
@@ -37,7 +38,7 @@ export function Subscribe() {
           </p>
         </div>
 
-        <div className="p-8 bg-gra-700 border borde-gray-500 rounded">
+        <div className="p-8 bg-gra-700 border border-gray-500 rounded">
           <strong className="text-2xl mb-6 block">
             Inscreva-se gratuitamente
           </strong>
@@ -49,7 +50,7 @@ export function Subscribe() {
               name=""
               id=""
               placeholder="Seu nome completo"
-              onChange={event => setName(event.target.value)}
+              onChange={(event) => setName(event.target.value)}
             />
             <input
               className="bg-gray-900 rounded px-5 h-14"
@@ -57,20 +58,21 @@ export function Subscribe() {
               name=""
               id=""
               placeholder="Seu e-mail"
-              onChange={event => setEmail(event.target.value)}
+              onChange={(event) => setEmail(event.target.value)}
             />
 
             <button
               className="mt-4 bg-green-500 uppercase py-4 rounded font-bold texte-small hover:bg-green-700 transition-colors diseabled:opacity-50"
               type="submit"
               disabled={loading}
-              >
-                Garantir minha vaga
+            >
+              Garantir minha vaga
             </button>
           </form>
         </div>
       </div>
       <img src="/src/assets/code-mockup.png" alt="" className="mt-10" />
+      <Footer />
     </div>
   )
 }

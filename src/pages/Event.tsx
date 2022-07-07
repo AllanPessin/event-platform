@@ -1,5 +1,6 @@
 import { LoadingScreen, Player, Ui } from "@vime/react";
 import { useParams } from "react-router-dom";
+import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { SideBar } from "../components/SideBar";
 import { Video } from "../components/Video";
@@ -25,6 +26,7 @@ export function Event() {
         }
         <SideBar />
       </main>
+      <Footer />
     </div>
   )
 }
