@@ -11,7 +11,7 @@ export function Event() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex flex-1">
+      <main className="flex flex-1 flex-col lg:flex-row">
         {slug
           ? <Video lessonSlug={slug} />
           : <div className="flex flex-1 flex-col justify-center w-full max-w-[1100px] max-h-[60vh] aspect-video">
